@@ -1,11 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using api;
+using api.Data; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers(); //pre core 8 need to update later for minimal api
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//getting the secret CLI connection string info 
+var _connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Configuration.GetConnectionString("DefaultConnection")
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+    options.UseSqlServer(_connectionString));
 
 var app = builder.Build();
 
@@ -20,5 +30,5 @@ app.UseHttpsRedirection();
 
 app.MapGet("/HelloWorld", APIendPoints.GetHelloMessage);
 
-
+app.MapControllers();// for controllers PRE .netcore 8...
 app.Run();
