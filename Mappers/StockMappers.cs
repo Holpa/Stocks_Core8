@@ -19,6 +19,28 @@ namespace api.Mappers
             };
 
         }
+
+        /// <summary>
+        /// hast to be in a form of Stock to be able to SAVE from a post request
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public static Stock ToStockFromCreateDTO(this CreateStockRequestDto stockModel)
+        {
+
+            return new Stock
+            {
+                Symbol = stockModel.Symbol,
+                CompanyName = stockModel.CompanyName,
+                Purchase = stockModel.Purchase,
+                LastDiv = stockModel.LastDiv,
+                Industry = stockModel.Industry,
+                MarketCap = stockModel.MarketCap
+            };
+
+
+        }
+
     }
 
 
