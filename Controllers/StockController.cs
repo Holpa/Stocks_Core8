@@ -1,4 +1,6 @@
 using api.Data;
+using api.DTOs;
+using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -18,7 +20,7 @@ namespace api.Controllers
         public IActionResult GetAll()
         {
             //defered execution
-            var _stocks = _context.Stocks.ToList();
+            var _stocks = _context.Stocks.ToList().Select(s => s.ToStockDto());
             return Ok(_stocks);
         }
 
@@ -31,7 +33,7 @@ namespace api.Controllers
             {
                 return NotFound();
             }
-            return Ok(_stock);
+            return Ok(_stock.ToStockDto());
         }
 
     }
