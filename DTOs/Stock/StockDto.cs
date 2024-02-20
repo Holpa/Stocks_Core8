@@ -1,5 +1,9 @@
 namespace api.DTOs.Stock
 {
+    /// <summary>
+    /// this class mainly for GET as it mimics the original STOCK object
+    /// Comments will be moved on its own DTO class for now
+    /// </summary>
     public class StockDto
     {
         public int id { get; set; }
