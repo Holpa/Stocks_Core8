@@ -17,11 +17,23 @@ namespace api.Controllers
             _context = context;
         }
 
+
+        /// <summary>
+        /// adding Async, reason for this because we dont want the client to wait on us
+        /// for better user experience
+        /// add async and Task<YourDesiredReturn> on the function signature
+        /// then you have to have 'await' on the code that leaves your system
+        /// or any processes that takes long time to do
+        /// side note ToList can be either ToListAsync since it can be a heavy process
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             //defered execution
-            var _stocks = _context.Stocks.ToList().Select(s => s.ToStockDto());
+            var _stocks = await _context.Stocks.ToListAsync();
+            var stockDTO = _stocks.Select(s => s.ToStockDto());
+
             return Ok(_stocks);
         }
 
