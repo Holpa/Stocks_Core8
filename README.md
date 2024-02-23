@@ -1,4 +1,5 @@
-This Program will be used to track stocks protfolio, potentially it will be an .exe or something easy to run
+#Stocks_Core8
+ This Program will be used to track stocks protfolio, potentially it will be an .exe or something easy to run
 
 # Title: Stock Tracker
 
