@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using api;
-using api.Data; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
+using api.Data;
+using api.Interfaces;
+using api.Repository; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ var _connectionString = builder.Configuration.GetConnectionString("DefaultConnec
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(_connectionString));
 
+
+builder.Services.AddScoped<IStockRepository, StockRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
