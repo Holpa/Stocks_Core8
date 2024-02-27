@@ -1,5 +1,7 @@
+using System.Drawing;
 using api.Data;
 using api.DTOs;
+using api.Interfaces;
 using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,49 +13,52 @@ namespace api.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
+        private readonly ICommentRepository _commentContext;
+        private readonly IStockRepository _stockContext;
 
-        public CommentController(ApplicationDBContext context)
+        public CommentController(ICommentRepository commnetContext, IStockRepository stockContext)
         {
-            _context = context;
+            _commentContext = commnetContext;
+            _stockContext = stockContext;
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> getAllComments()
+        {
+            var comments = await _commentContext.GetAllAsync();
+            // add mapper between comment and commentDTO
+            var commentDTO = comments.Select(s => s.ToCommentDto());
+            return Ok(commentDTO);
         }
 
         [HttpPost("{symbol}")]
-        public IActionResult UpdateComment(string symbol, [FromBody] CommentDTO commentDTO)
+        public async Task<IActionResult> UpdateComment(string symbol,
+         [FromBody] CommentDTO commentDTO)
         {
             // Ensure symbol and comment exist before proceeding
-            if (string.IsNullOrWhiteSpace(symbol) || string.IsNullOrWhiteSpace(commentDTO.Content))
+            if (string.IsNullOrWhiteSpace(symbol) || string.IsNullOrWhiteSpace(commentDTO.Content) ||
+             string.IsNullOrWhiteSpace(commentDTO.Title))
             {
                 return BadRequest("Symbol and content are required.");
             }
 
             // Sanitize the input
             var cleanSymbol = symbol.Trim();
-            var cleanContent = commentDTO.Content.Trim();
-
             // Find the stock by symbol
-            var stock = _context.Stocks.Include(s => s.Comments).FirstOrDefault(s => s.Symbol == cleanSymbol);
 
-            if (stock == null)
+            var _stock = await _stockContext.GetBySymbol(cleanSymbol);
+
+            if (_stock == null)
             {
                 return NotFound($"Stock with symbol {cleanSymbol} not found.");
             }
+            commentDTO.Content = commentDTO.Content.Trim();
+            commentDTO.Title = commentDTO.Title.Trim();
+            commentDTO.StockId = _stock.id;
 
-            // Assuming we're adding a new comment to the stock
-            var comment = new Comment
-            {
-                Title = commentDTO.Title,
-                Content = cleanContent,
-                StockId = stock.id
-            };
-
-            // Add new comment
-            _context.Comments.Add(comment);
-
-            // Save the changes to the database
-            _context.SaveChanges();
-
-            return Ok("Comment added successfully.");
+            var _comm = commentDTO.ToComment();
+            return Ok(await _commentContext.UpdateComment(_comm));
         }
 
     }
