@@ -10,5 +10,7 @@ namespace api.Interfaces
         Task<List<Comment>> GetAllAsync();
 
         Task<String> UpdateComment(Comment comment);
+
+        Task<Comment?> GetByIdAsync(int id);
     }
 }
