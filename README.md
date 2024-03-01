@@ -36,4 +36,4 @@ Run the application 'dotnet run'
 
 # Contributing
 
-Following "Teddy Smith on Youtube" or in github "Teddysmithdev" and BG3 Down Down Down By The River...
+Following "Teddy Smith on Youtube" or in github "Teddysmithdev"
