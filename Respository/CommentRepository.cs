@@ -27,7 +27,7 @@ namespace api.Repository
             return await _context.Comments.FindAsync(id);
         }
 
-        public async Task<String> UpdateComment(Comment comment)
+        public async Task<String> CreateComment(Comment comment)
         {
             // Add new comment
             await _context.Comments.AddAsync(comment);
