@@ -15,7 +15,7 @@ This software will help you manage your protfolio with neat front end interface
 
 # WHY HTMX
 
-"\* Why should only <a> and <form> be able to make HTTP requests?
+Why should only <a> and <form> be able to make HTTP requests?
 
 - Why should only click & submit events trigger them?
 - Why should only GET & POST be available?
