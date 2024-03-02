@@ -37,3 +37,7 @@ Run the application 'dotnet run'
 ## Contributing
 
 Following "Teddy Smith on Youtube" or in github "Teddysmithdev"
+
+### Submit a pull request
+
+If you'd like to contribute, please fork the repository and open a pull request to the `master` branch.
