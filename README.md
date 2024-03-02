@@ -34,6 +34,6 @@ Simply clone the project then run it against .NET core 8
 
 Run the application 'dotnet run'
 
-## 🤝 Contributing
+## Contributing
 
 Following "Teddy Smith on Youtube" or in github "Teddysmithdev"
