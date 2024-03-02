@@ -4,6 +4,7 @@ using api.DTOs;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -77,6 +78,16 @@ namespace api.Controllers
             }
 
             return Ok(_comment.ToCommentDto());
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteById([FromRoute] int id)
+        {
+            var _result = await _commentRepo.DeleteByIdAsync(id);
+            if (_result == null)
+            {
+                return NotFound("Comment was not found");
+            }
+            return Ok("Comment deleted");
         }
 
     }
