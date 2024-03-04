@@ -31,6 +31,10 @@ namespace api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             //defered execution
             var _stocks = await _stockRepo.GetAllAsync();
             var stockDTO = _stocks.Select(s => s.ToStockDto());
@@ -38,9 +42,14 @@ namespace api.Controllers
             return Ok(_stocks);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            // 'validation'
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var _stock = await _stockRepo.GetByIdAsync(id);
 
             if (_stock == null)
@@ -53,6 +62,10 @@ namespace api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var _stockModel = stockDto.ToStockFromCreateDTO();
             await _stockRepo.CreateAsync(_stockModel);
             // here we are doing multiple things
@@ -65,10 +78,14 @@ namespace api.Controllers
         }
 
         [HttpPut]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id,
          [FromBody] UpdateStockRequestDto stockDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             //make sure id is nothing but number!
             //find the record
             var _stock = await _stockRepo.UpdateAsync(id, stockDto);
@@ -83,9 +100,13 @@ namespace api.Controllers
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        [Route("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var _stock = await _stockRepo.DeleteAsync(id);
             if (_stock == null)
             {

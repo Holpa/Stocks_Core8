@@ -27,16 +27,24 @@ namespace api.Controllers
         [HttpGet]
         public async Task<IActionResult> getAllComments()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var comments = await _commentRepo.GetAllAsync();
             // add mapper between comment and commentDTO
             var commentDTO = comments.Select(s => s.ToCommentDto());
             return Ok(commentDTO);
         }
 
-        [HttpPost("{symbol}")]
+        [HttpPost("{symbol:alpha:minlength(1):maxlength(10)}")]
         public async Task<IActionResult> UpdateComment(string symbol,
          [FromBody] CreateCommentDTO createCommentDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             // Ensure symbol and comment exist before proceeding
             if (string.IsNullOrWhiteSpace(symbol) || string.IsNullOrWhiteSpace(createCommentDTO.Content) ||
              string.IsNullOrWhiteSpace(createCommentDTO.Title))
@@ -67,9 +75,13 @@ namespace api.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var _comment = await _commentRepo.GetByIdAsync(id);
             if (_comment == null)
             {
@@ -79,9 +91,13 @@ namespace api.Controllers
 
             return Ok(_comment.ToCommentDto());
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteById([FromRoute] int id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var _result = await _commentRepo.DeleteByIdAsync(id);
             if (_result == null)
             {
