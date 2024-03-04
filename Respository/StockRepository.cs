@@ -25,6 +25,15 @@ namespace api.Repository
 
         public async Task<Stock?> DeleteAsync(int id)
         {
+            // First, find and delete any comments associated with the stock
+            var comments = await _context.Comments
+                                         .Where(c => c.StockId == id)
+                                         .ToListAsync();
+
+            if (comments.Any())
+            {
+                _context.Comments.RemoveRange(comments);
+            }
             var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.id == id);
             if (stockModel == null)
             {
