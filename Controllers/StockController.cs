@@ -4,6 +4,7 @@ using api.Mappers;
 using api.DTOs.Stock;
 using Microsoft.AspNetCore.Mvc;
 using api.Interfaces;
+using api.Helpers;
 
 
 namespace api.Controllers
@@ -29,14 +30,14 @@ namespace api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject queryObject)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             //defered execution
-            var _stocks = await _stockRepo.GetAllAsync();
+            var _stocks = await _stockRepo.GetAllAsync(queryObject);
             var stockDTO = _stocks.Select(s => s.ToStockDto());
 
             return Ok(_stocks);
