@@ -68,8 +68,25 @@ namespace api.Repository
                       stocks.OrderBy(s => s.Symbol);
                 }
             }
+            // pagination
+            /*
+            using Skip and take makes magic where you can slice the enteries into portions then smaller portions 
 
-            return await stocks.ToListAsync();
+            .Skip(2) and .Take(2)
+
+            will do the following 
+
+            1 ,2 3, 4, 5, 6, 7, 8
+
+            will take (1,2) and skip the rest
+
+            but next query is going to consider the sub set  (3,4,5,6,7,8)
+
+            then take will do (3,4) this time ...etc
+            */
+            var _skipNumer = (queryObject.PageNumber - 1) * queryObject.PageSize;
+
+            return await stocks.Skip(_skipNumer).Take(queryObject.PageSize).ToListAsync();
         }
 
         public async Task<Stock?> GetByIdAsync(int id)
