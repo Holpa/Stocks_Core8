@@ -38,7 +38,7 @@ namespace api.Controllers
         }
 
         [HttpPost("{symbol:alpha:minlength(1):maxlength(10)}")]
-        public async Task<IActionResult> UpdateComment(string symbol,
+        public async Task<IActionResult> InsertComment(string symbol,
          [FromBody] CreateCommentDTO createCommentDTO)
         {
             if (!ModelState.IsValid)
@@ -104,6 +104,19 @@ namespace api.Controllers
                 return NotFound("Comment was not found");
             }
             return Ok("Comment deleted");
+        }
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> UpdateComment([FromRoute] int id,
+         [FromBody] UpdateCommentDTO updateCommentDto)
+        {
+            var _comment = await _commentRepo.UpdateCommentAsync(id, updateCommentDto.UpdateToComment());
+
+            if (_comment == null)
+            {
+                return NotFound("Comment not found");
+            }
+            return Ok(_comment);
         }
 
     }
