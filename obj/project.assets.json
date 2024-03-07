@@ -59,25 +59,6 @@
           }
         }
       },
-      "Identity.Core/1.2.7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "2.1.0",
-          "Microsoft.Extensions.Logging": "2.1.0",
-          "Microsoft.Extensions.Options": "2.1.0",
-          "System.ComponentModel.Annotations": "4.5.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Identity.Core.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Identity.Core.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.2": {
         "type": "package",
         "dependencies": {
@@ -1190,15 +1171,6 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "System.ComponentModel.Annotations/4.5.0": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/_._": {}
-        }
-      },
       "System.Composition/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -1818,89 +1790,6 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
-      ]
-    },
-    "Identity.Core/1.2.7": {
-      "sha512": "yWb3TmRoxp1OjsSl5yLSTGC+ZpQT24yQXRiyJ3pP6crly6yw6lxwAy6hNgKOvEamNwsRDUwed6GqKWgTkjQ3MQ==",
-      "type": "package",
-      "path": "identity.core/1.2.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "identity.core.1.2.7.nupkg.sha512",
-        "identity.core.nuspec",
-        "lib/netstandard2.0/Identity.Core.dll",
-        "lib/netstandard2.0/Identity.Core.pdb",
-        "lib/netstandard2.0/Identity.Core.xml",
-        "src/Identity.Core/AuthenticatorTokenProvider.cs",
-        "src/Identity.Core/Base32.cs",
-        "src/Identity.Core/ClaimsIdentityOptions.cs",
-        "src/Identity.Core/DefaultPersonalDataProtector.cs",
-        "src/Identity.Core/EmailTokenProvider.cs",
-        "src/Identity.Core/ILookupNormalizer.cs",
-        "src/Identity.Core/ILookupProtector.cs",
-        "src/Identity.Core/ILookupProtectorKeyRing.cs",
-        "src/Identity.Core/IPasswordHasher.cs",
-        "src/Identity.Core/IPasswordValidator.cs",
-        "src/Identity.Core/IPersonalDataProtector.cs",
-        "src/Identity.Core/IProtectedUserStore.cs",
-        "src/Identity.Core/IQueryableRoleStore.cs",
-        "src/Identity.Core/IQueryableUserStore.cs",
-        "src/Identity.Core/IRoleClaimStore.cs",
-        "src/Identity.Core/IRoleStore.cs",
-        "src/Identity.Core/IRoleValidator.cs",
-        "src/Identity.Core/IUserAuthenticationTokenStore.cs",
-        "src/Identity.Core/IUserAuthenticatorKeyStore.cs",
-        "src/Identity.Core/IUserClaimStore.cs",
-        "src/Identity.Core/IUserClaimsPrincipalFactory.cs",
-        "src/Identity.Core/IUserEmailStore.cs",
-        "src/Identity.Core/IUserLockoutStore.cs",
-        "src/Identity.Core/IUserLoginStore.cs",
-        "src/Identity.Core/IUserPasswordStore.cs",
-        "src/Identity.Core/IUserPhoneNumberStore.cs",
-        "src/Identity.Core/IUserRoleStore.cs",
-        "src/Identity.Core/IUserSecurityStampStore.cs",
-        "src/Identity.Core/IUserStore.cs",
-        "src/Identity.Core/IUserTwoFactorRecoveryCodeStore.cs",
-        "src/Identity.Core/IUserTwoFactorStore.cs",
-        "src/Identity.Core/IUserTwoFactorTokenProvider.cs",
-        "src/Identity.Core/IUserValidator.cs",
-        "src/Identity.Core/Identity.Core.csproj",
-        "src/Identity.Core/IdentityBuilder.cs",
-        "src/Identity.Core/IdentityError.cs",
-        "src/Identity.Core/IdentityErrorDescriber.cs",
-        "src/Identity.Core/IdentityOptions.cs",
-        "src/Identity.Core/IdentityResult.cs",
-        "src/Identity.Core/IdentityServiceCollectionExtensions.cs",
-        "src/Identity.Core/LockoutOptions.cs",
-        "src/Identity.Core/PasswordHasher.cs",
-        "src/Identity.Core/PasswordHasherCompatibilityMode.cs",
-        "src/Identity.Core/PasswordHasherOptions.cs",
-        "src/Identity.Core/PasswordOptions.cs",
-        "src/Identity.Core/PasswordValidator.cs",
-        "src/Identity.Core/PasswordVerificationResult.cs",
-        "src/Identity.Core/PersonalDataAttribute.cs",
-        "src/Identity.Core/PhoneNumberTokenProvider.cs",
-        "src/Identity.Core/PrincipalExtensions.cs",
-        "src/Identity.Core/Properties/AssemblyInfo.cs",
-        "src/Identity.Core/Properties/Resources.Designer.cs",
-        "src/Identity.Core/ProtectedPersonalDataAttribute.cs",
-        "src/Identity.Core/Resources.resx",
-        "src/Identity.Core/Rfc6238AuthenticationService.cs",
-        "src/Identity.Core/RoleManager.cs",
-        "src/Identity.Core/RoleValidator.cs",
-        "src/Identity.Core/SignInOptions.cs",
-        "src/Identity.Core/SignInResult.cs",
-        "src/Identity.Core/StoreOptions.cs",
-        "src/Identity.Core/TokenOptions.cs",
-        "src/Identity.Core/TokenProviderDescriptor.cs",
-        "src/Identity.Core/TotpSecurityStampBasedTokenProvider.cs",
-        "src/Identity.Core/UpperInvariantLookupNormalizer.cs",
-        "src/Identity.Core/UserClaimsPrincipalFactory.cs",
-        "src/Identity.Core/UserLoginInfo.cs",
-        "src/Identity.Core/UserManager.cs",
-        "src/Identity.Core/UserOptions.cs",
-        "src/Identity.Core/UserValidator.cs"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.2": {
@@ -3801,95 +3690,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.ComponentModel.Annotations/4.5.0": {
-      "sha512": "UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
-      "type": "package",
-      "path": "system.componentmodel.annotations/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/net461/System.ComponentModel.Annotations.dll",
-        "lib/netcore50/System.ComponentModel.Annotations.dll",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.4/System.ComponentModel.Annotations.dll",
-        "lib/netstandard2.0/System.ComponentModel.Annotations.dll",
-        "lib/portable-net45+win8/_._",
-        "lib/uap10.0.16299/_._",
-        "lib/win8/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/net461/System.ComponentModel.Annotations.dll",
-        "ref/net461/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/System.ComponentModel.Annotations.dll",
-        "ref/netcore50/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/de/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/es/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/fr/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/it/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/ja/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/ko/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/ru/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/zh-hans/System.ComponentModel.Annotations.xml",
-        "ref/netcore50/zh-hant/System.ComponentModel.Annotations.xml",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard1.1/System.ComponentModel.Annotations.dll",
-        "ref/netstandard1.1/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/de/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/es/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/fr/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/it/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/ja/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/ko/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/ru/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/zh-hans/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.1/zh-hant/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/System.ComponentModel.Annotations.dll",
-        "ref/netstandard1.3/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/de/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/es/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/fr/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/it/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/ja/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/ko/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/ru/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/zh-hans/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.3/zh-hant/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/System.ComponentModel.Annotations.dll",
-        "ref/netstandard1.4/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/de/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/es/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/fr/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/it/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/ja/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/ko/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/ru/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/zh-hans/System.ComponentModel.Annotations.xml",
-        "ref/netstandard1.4/zh-hant/System.ComponentModel.Annotations.xml",
-        "ref/netstandard2.0/System.ComponentModel.Annotations.dll",
-        "ref/netstandard2.0/System.ComponentModel.Annotations.xml",
-        "ref/portable-net45+win8/_._",
-        "ref/uap10.0.16299/_._",
-        "ref/win8/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.componentmodel.annotations.4.5.0.nupkg.sha512",
-        "system.componentmodel.annotations.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Composition/6.0.0": {
       "sha512": "d7wMuKQtfsxUa7S13tITC8n1cQzewuhD5iDjZtK2prwFfKVzdYtgrTHgjaV03Zq7feGQ5gkP85tJJntXwInsJA==",
       "type": "package",
@@ -4862,7 +4662,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Identity.Core >= 1.2.7",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.2",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.2",
@@ -4924,10 +4723,6 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Identity.Core": {
-            "target": "Package",
-            "version": "[1.2.7, )"
-          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.2, )"

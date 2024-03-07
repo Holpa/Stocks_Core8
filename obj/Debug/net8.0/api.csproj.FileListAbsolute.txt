@@ -140,7 +140,6 @@ C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Microsoft.AspNetCore.Js
 C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
-C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Identity.Core.dll
 C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Work\source\repos\Finshark\api\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
