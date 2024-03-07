@@ -5,7 +5,11 @@ using api.Data;
 using api.Interfaces;
 using api.Repository;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
+using Newtonsoft.Json;
+using api.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +21,38 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+});
+
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredUniqueChars = 1;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 8;
+}).AddEntityFrameworkStores<ApplicationDBContext>();
+
+builder.Services.AddAuthentication(Options =>
+{
+    Options.DefaultAuthenticateScheme =
+    Options.DefaultChallengeScheme =
+    Options.DefaultScheme =
+    Options.DefaultSignInScheme =
+    Options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["JWT:Audience"],
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(
+            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
+        )
+
+    };
 });
 
 //getting the secret CLI connection string info 
@@ -38,7 +74,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapGet("/HelloWorld", APIendPoints.GetHelloMessage);
 
 app.MapControllers();// for controllers PRE .netcore 8...
