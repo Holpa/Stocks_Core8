@@ -415,3 +415,14 @@ obj/Debug/net8.0/api.pdb
 obj/Debug/net8.0/apphost.exe
 obj/Debug/net8.0/ref/api.dll
 obj/Debug/net8.0/refint/api.dll
+bin/Debug/net8.0/api.dll
+bin/Debug/net8.0/api.exe
+bin/Debug/net8.0/api.pdb
+obj/Debug/net8.0/api.AssemblyInfo.cs
+obj/Debug/net8.0/api.AssemblyInfoInputs.cache
+obj/Debug/net8.0/api.dll
+obj/Debug/net8.0/api.genruntimeconfig.cache
+obj/Debug/net8.0/api.pdb
+obj/Debug/net8.0/apphost.exe
+obj/Debug/net8.0/ref/api.dll
+obj/Debug/net8.0/refint/api.dll
