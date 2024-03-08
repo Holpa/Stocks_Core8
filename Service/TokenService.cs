@@ -14,7 +14,7 @@ namespace api.Service
         public TokenService(IConfiguration config)
         {
             _config = config;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSigningKey"]));
         }
 
         public string CreateToken(AppUser user)
