@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qPcZ5B5UMDAStr0d9uLOnJh67rgHY8cQA0w7mK9tCJAyDLGCAqgmOcb9+mD3s65LWNqE38VBpzXc689c7Nae4Q==",
+  "dgSpecHash": "DgzHDpm6R00nAHTl4SsqdWTkSEqPVVKtCySm4bJp0+ZE9KjWa869xbUxaOKy8UUKkNF41FAStdXzp3EAz011MA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Work\\source\\repos\\Finshark\\api\\api.csproj",
+  "projectFilePath": "c:\\Users\\Work\\source\\repos\\Finshark\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Work\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Work\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -94,12 +94,5 @@
     "C:\\Users\\Work\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Work\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Work\\source\\repos\\Finshark\\api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
