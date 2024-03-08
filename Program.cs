@@ -32,6 +32,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<ApplicationDBContext>();
 
+var signingKey = builder.Configuration["JwtSigningKey"];
+
 builder.Services.AddAuthentication(Options =>
 {
     Options.DefaultAuthenticateScheme =
@@ -49,7 +51,7 @@ builder.Services.AddAuthentication(Options =>
         ValidAudience = builder.Configuration["JWT:Audience"],
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(
-            System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"])
+            System.Text.Encoding.UTF8.GetBytes(signingKey)
         )
 
     };
