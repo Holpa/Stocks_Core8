@@ -9,7 +9,8 @@ using Newtonsoft.Json;
 using api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
+using Microsoft.IdentityModel.Tokens;
+using api.Service; // Replace 'api.Data' with the actual namespace where 'ApplicationDBContext' is defined
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,6 +58,8 @@ builder.Services.AddAuthentication(Options =>
     };
 });
 
+
+
 //getting the secret CLI connection string info 
 var _connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 //builder.Configuration.GetConnectionString("DefaultConnection")
@@ -66,6 +69,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
