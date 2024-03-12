@@ -6,5 +6,6 @@ namespace api.Models
     {
         //you can add more properties into the Identity user
         public int Risk { get; set; }
+        public List<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
     }
 }
