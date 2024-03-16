@@ -1,11 +1,14 @@
 
 
+using System.Linq.Expressions;
 using api.Extensions;
 using api.Interfaces;
 using api.Models;
+using api.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace api.Controllers
 {
@@ -67,6 +70,26 @@ namespace api.Controllers
             {
                 return Ok(portfolioModel);
             }
+        }
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> PortfolioDelete(string symbol)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var userPortfolio = await _portRepo.GetUserPortfolio(appUser);
+            var filteredStock = userPortfolio.Where(s => s.Symbol.ToLower() == symbol.ToLower()).ToList();
+
+            if (filteredStock.Count() == 1)
+            {
+                await _portRepo.DeleteAsync(appUser, symbol);
+            }
+            else
+            {
+                return BadRequest("Stock not in your portfolio");
+            }
+
+            return Ok("Portfolio Deleted");
         }
     }
 }
