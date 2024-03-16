@@ -102,6 +102,11 @@ namespace api.Repository
             FirstOrDefaultAsync(s => s.Symbol == symbol);
         }
 
+        public async Task<Stock?> GetBySymbolAsync(string symbol)
+        {
+            return await _context.Stocks.FirstOrDefaultAsync(s => s.Symbol == symbol);
+        }
+
         public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto stockDto)
         {
             var _existingStock = await _context.Stocks.FirstOrDefaultAsync(x => x.id == id);
